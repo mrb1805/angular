@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>My First Angular App</title>
+    <script type="text/javascript" src="angular.min.js"></script>
+    	<script>	
+    		var MyModule = angular.module("MyApplication",[]);
+
+    		MyModule.controller("MyController",function($scope){
+    			
+    			var details = [
+	    				{"Name":"ABC","Address":"Mumbai","SID":"123","SUB":[{"ABC":"a"},{"ABC":"b"},{"ABC":"c"}]},
+	    				{"Name":"DEF","Address":"Bengaluru","SID":"456"},
+	    				{"Name":"GHI","Address":"Hyd","SID":"789"}
+    				];
+    				$scope.content=details;
+
+    	
+
+    			$scope.addDetails = function(){
+    				$scope.content.push(angular.copy($scope.E));
+    				$scope.E="";
+    			}
+ 				$scope.IsAddNew = false;
+    			$scope.addNew = function(){
+    					$scope.IsAddNew = true;
+    			}
+    			$scope.cancel = function(){
+    					$scope.IsAddNew = false;
+    			}
+    		}); 
+    	</script>
+</head>
+<body>
+	<div ng-app="MyApplication">
+		<div ng-controller="MyController">
+		
+		<div ng-show="IsAddNew">
+			<input type="button" name="button" ng-click="addDetails()" value="SAVE"/><br>
+			<input placeholder="Name" type="text" name="Name" ng-model="E.Name"/><br>
+			<input placeholder="Address" type="text" name="Address" ng-model="E.Address"/><br>
+			<input placeholder="SID" type="text" name="SID" ng-model="E.SID"/><br>	
+		</div>
+		
+		<input type="button" name="button"  ng-click="addNew()" value="ADD NEW"/>
+		<input type="button" name="button"  ng-click="cancel()" value="CANCEL"/><br>
+		
+		<div ng-hide="IsAddNew">
+			<table border="1px solid black">
+			<tr ng-repeat="x in content">
+				<td>{{x.Name}}</td>			
+				<td>{{x.Address}}</td>
+				<td>{{x.SID}}</td>
+				<!--td ng-repeat="y in x.SUB">
+					{{y.ABC}}
+				</td-->
+			</tr>
+			</table>
+		</div>	
+			</div>
+		</div>
+	</div>
+</body>
+</html>
