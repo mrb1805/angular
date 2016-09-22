@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="angular.min.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("mycontroller", function ($scope) {
+            var details = [{ fname: "srivatsa", lname: "K R", salary: "10000" },
+                { fname: "vibha", lname: "vadul", salary: "10001" },
+                { fname: "Tejus", lname: "nataraju", salary: "10002" }];
+            var keyArray = Object.keys(details[0]);
+            $scope.keysObject = keyArray;
+            //$scope.str = "hello world";
+            //$scope.emp = {ename:"srivatsa",address:"Bengaluru"};
+            $scope.Getdetails=details;
+            //$scope.emp.ename = "srivatsa";
+            //$scope.emp.address = "Bengaluru";
+            $scope.display = false;
+            $scope.addnew = function () {
+                $scope.display = true;
+
+            }
+            $scope.addNewController = function ($scope) {
+                $scope.save = function () {
+                    //var emp = { fname: $scope.fname, lname: $scope.lname, salary: $scope.salary };
+                    //details.push(emp);
+                    $scope.Getdetails.push(angular.copy($scope.E));
+                    $scope.$parent.E = null;
+                    //alert("a");
+                }
+               
+                $scope.cancel = function () {
+                    //$scope.display = false;
+                    //alert("b");
+                    $scope.$parent.display = false;
+
+                }
+            }
+            
+        });
+        
+        
+    </script>
+</head>
+<body>
+    <div ng-app="myapp" ng-controller="mycontroller">
+       <div ng-show=display ng-controller="addNewController">
+            <input type="text" name="name" value=" " ng-model="E.fname" /></br>
+            <input type="text" name="name" value=" " ng-model="E.lname" /></br>
+            <input type="text" name="name" value=" " ng-model="E.salary" /></br>
+            <input type="button" name="name" value="save" ng-click="save()" />
+            <input type="button" name="name" value="cancel" ng-click="cancel()" />
+        </div>
+
+        <div ng-show=!display>
+        <input type="button" name="name" value="AddNew" ng-click="addnew()" />
+
+        <table border="1px solid">
+            <tr>
+                <th ng-repeat ="y in keysObject">
+                    {{y}}
+                </th>
+            </tr>
+            <tr ng-repeat="x in Getdetails">
+                <td>{{x.fname}}</td>
+                <td>{{x.lname}}</td>
+                <td>{{x.salary}}</td>
+            </tr>
+        </table>
+        </div>     
+    </div>
+</body>
+</html>

@@ -17,37 +17,38 @@
     				];
     				$scope.content=details;
 
-    	
-
+    				$scope.IsAddNew = true;
+    		$scope.AddNewController = function(){
     			$scope.addDetails = function(){
     				$scope.content.push(angular.copy($scope.E));
-    				$scope.E="";
+    				$scope.E=null;
     			}
- 				$scope.IsAddNew = false;
+    		}
+
+    			$scope.cancel = function(){
+    					$scope.$parent.IsAddNew = false;
+    			}
+
     			$scope.addNew = function(){
     					$scope.IsAddNew = true;
     			}
-    			$scope.cancel = function(){
-    					$scope.IsAddNew = false;
-    			}
+
     		}); 
     	</script>
 </head>
 <body>
-	<div ng-app="MyApplication">
-		<div ng-controller="MyController">
-		
-		<div ng-show="IsAddNew">
-			<input type="button" name="button" ng-click="addDetails()" value="SAVE"/><br>
+	<div ng-app="MyApplication" ng-controller="MyController">
+		<div ng-show="IsAddNew" ng-controller="AddNewController">	
 			<input placeholder="Name" type="text" name="Name" ng-model="E.Name"/><br>
 			<input placeholder="Address" type="text" name="Address" ng-model="E.Address"/><br>
 			<input placeholder="SID" type="text" name="SID" ng-model="E.SID"/><br>	
+			<input type="button" name="button" ng-click="addDetails()" value="SAVE"/><br>
+			<input type="button" name="button"  ng-click="cancel()" value="CANCEL"/><br>
 		</div>
-		
+
+		<div ng-hide="!IsAddNew">
 		<input type="button" name="button"  ng-click="addNew()" value="ADD NEW"/>
-		<input type="button" name="button"  ng-click="cancel()" value="CANCEL"/><br>
-		
-		<div ng-hide="IsAddNew">
+
 			<table border="1px solid black">
 			<tr ng-repeat="x in content">
 				<td>{{x.Name}}</td>			
