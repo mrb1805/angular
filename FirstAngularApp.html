@@ -18,21 +18,25 @@
     				$scope.content=details;
 
     				$scope.IsAddNew = true;
-    		$scope.AddNewController = function(){
+
+    				$scope.addNew = function(){
+    					$scope.IsAddNew = true;
+    				}
+
+
+    			$scope.AddNewController = function(){
+
     			$scope.addDetails = function(){
     				$scope.content.push(angular.copy($scope.E));
     				$scope.E=null;
-    			}
-    		}
+	    			}
+	    		}
 
     			$scope.cancel = function(){
     					$scope.$parent.IsAddNew = false;
     			}
 
-    			$scope.addNew = function(){
-    					$scope.IsAddNew = true;
-    			}
-
+    			
     		}); 
     	</script>
 </head>
@@ -46,7 +50,7 @@
 			<input type="button" name="button"  ng-click="cancel()" value="CANCEL"/><br>
 		</div>
 
-		<div ng-hide="!IsAddNew">
+		<div ng-show="!IsAddNew">
 		<input type="button" name="button"  ng-click="addNew()" value="ADD NEW"/>
 
 			<table border="1px solid black">
