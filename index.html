@@ -13,11 +13,9 @@
                 { fname: "GHI", lname: "C", salary: "300" }];
             var keyArray = Object.keys(details[0]);
             $scope.keysObject = keyArray;
-            //$scope.str = "hello world";
-            //$scope.emp = {ename:"srivatsa",address:"Bengaluru"};
+ 
             $scope.Getdetails=details;
-            //$scope.emp.ename = "srivatsa";
-            //$scope.emp.address = "Bengaluru";
+   
             $scope.display = false;
             $scope.addnew = function () {
                 $scope.display = true;
@@ -29,12 +27,11 @@
                     //details.push(emp);
                     $scope.Getdetails.push(angular.copy($scope.E));
                     $scope.$parent.E = null;
-                    //alert("a");
+                    
                 }
                
                 $scope.cancel = function () {
                     //$scope.display = false;
-                    //alert("b");
                     $scope.$parent.display = false;
 
                 }
