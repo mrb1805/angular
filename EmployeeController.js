@@ -1,6 +1,7 @@
 MyModule.controller("MyController", function ($scope,EmployeeService) {
 
-    $scope.Employees = EmployeeService;
+    $scope.Employees = EmployeeService.Employees;
+
 
     $scope.IsAddNew = false;
 
@@ -16,8 +17,7 @@ MyModule.controller("MyController", function ($scope,EmployeeService) {
 
         $scope.Save = function () {
             //alert('a');
-            $scope.Employees.push(angular.copy($scope.E));
-            $scope.E = null;
+            EmployeeService.Add(angular.copy($scope.E));
 
             $scope.$parent.IsAddNew = false;
         }

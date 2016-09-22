@@ -4,5 +4,23 @@ function EmployeeDummyService() {
     var emp3 = { "fname": "GHI", "lname": "Z", "salary": 12 };
 
     var Employees = [emp1, emp2, emp3];
-    return Employees;
+
+    var AddFunction = function(e){
+    	Employees.push(e);
+    	return Employees;
+    }
+    
+    /*
+    var myObject={}
+    myObject.Add = function(e){
+    	Employees.push(e);
+    	return Employees;
+    }
+    myObject.Employees=Employees;
+    */
+
+    return {
+    	Employees:Employees,
+    	Add:AddFunction
+    }
 }
