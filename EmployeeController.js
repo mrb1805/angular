@@ -1,10 +1,10 @@
 MyModule.controller("MyController", function ($scope,EmployeeService) {
 
-    $scope.Employees = EmployeeService.Employees;
-
-
+    EmployeeService.GetEmployees().then(function(r){
+        $scope.Employees = r;
+    });
+    
     $scope.IsAddNew = false;
-
     $scope.AddNew = function () {
         $scope.IsAddNew = true;
     }

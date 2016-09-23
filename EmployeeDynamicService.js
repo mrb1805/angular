@@ -1,8 +1,26 @@
-function EmployeeDynamicService() {
-    var emp1 = { "fname": "ABC1", "lname": "X", "salary": 245 };
-    var emp2 = { "fname": "DEF2", "lname": "Y", "salary": 100000 };
-    var emp3 = { "fname": "GHI3", "lname": "Z", "salary": 12 };
+function EmployeeDynamicService($http) {
 
-    var Employees = [emp1, emp2, emp3];
-    return Employees;
+	var myObject = {};
+	var Employees = [];
+
+	myObject.GetEmployees =  function(){
+	return $http.get("http://trainitservice.azurewebsites.net/api/Employee")
+	.then(function(r){
+			for (i = 0;  i < r.data.length; i++) {
+				var Emp1 = {};
+				Emp1.fname = r.data[i].FirsName;
+				Emp1.lname = r.data[i].LastName;
+				Emp1.salary = r.data[i].Salary;
+				Employees.push(Emp1);
+			}
+			return Employees; 
+		}); 
+	}
+	
+	myObject.Add = function(e) {
+		Employees.push(e);
+    	return Employees;
+	}
+
+	return myObject;
 }
