@@ -46,7 +46,7 @@
                     <tr ng-repeat="y in Employees">
                         <td>{{y.fname}}</td>
                         <td>{{y.lname}}</td>
-                        <td>{{y.salary}}</td>
+                        <td>{{y.salary | currency:"&#8377;"}}</td>
                     </tr>
                 </table>
             </div>
