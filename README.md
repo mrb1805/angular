@@ -9,3 +9,6 @@ Services - Arrangement of Script files in index.html is IMPORTANT
 
 To Read :
 	http://www.codelord.net/2015/05/25/dont-use-$https-success/ 
+
+Angular routing !! 
+	install npm install Angular-route

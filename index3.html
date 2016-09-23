@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>NgRoute</title>
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript" src="angular-route.min.js"></script>
+<script type="text/javascript">
+		var MyApp = angular.module("MyApp",['ngRoute']);
+		MyApp.config(function($routeProvider){
+			$routeProvider.when("/Customer",{templateUrl : 'Customer.html'})
+			.when("/Supplier",{templateUrl : 'Supplier.html'})
+			.when("/Product",{templateUrl : 'Product.html'})
+		});
+</script>
+</head>
+<body>
+	<div ng-app="MyApp">
+	<a href="#/Customer">Customer</a>
+	<a href="#/Supplier">Supplier</a>
+	<a href="#/Product">Product</a>
+	<ng-view></ng-view>
+	</div>
+</body>
+</html>
+<!--
+	['ngRoute'] : Loaded into memory when 
+	Usually servives are Modules , coz of name spaceing.
+	(ngRoute Module) $route -> is a service which are used for mapping.
+
+	Few Services are under Global Scope
+->
