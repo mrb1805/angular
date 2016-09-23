@@ -11,6 +11,12 @@
     <script src="MyCustomFilter.js"></script>
     <script src="EmployeeService.js"></script>
     <script src="EmployeeController.js"></script>
+    <style type="text/css">
+        a{
+            color:blue;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
@@ -44,7 +50,11 @@
                         <th>Salary</th>
                     </tr>
                     <tr ng-repeat="y in Employees">
-                        <td>{{y.fname}}</td>
+                        <td>
+                            <a ng-click="OnNameClick()">
+                                {{y.fname}}
+                            </a>
+                        </td>
                         <td>{{y.lname }}</td>
                         <td>{{y.salary | currency:"&#8377;" | mycustomfilter}}</td>
                     </tr>

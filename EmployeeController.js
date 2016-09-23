@@ -11,7 +11,10 @@ MyModule.controller("MyController", function ($scope,EmployeeService) {
 
 
     //***************************************************************************************************************
-
+    $scope.OnNameClick = function(){
+          $scope.IsAddNew = true;
+          $scope.$broadcast("OnNameClick","Mahesh");
+    }
 
     $scope.AddNewController = function ($scope) {
 
@@ -22,11 +25,16 @@ MyModule.controller("MyController", function ($scope,EmployeeService) {
             $scope.$parent.IsAddNew = false;
         }
 
+        
 
         $scope.CancelAdd = function () {
             //alert("b")
             $scope.$parent.IsAddNew = false;
         }
+
+        $scope.$on("OnNameClick",function(r,s){
+            alert(s);
+        })
     }
 
 });
